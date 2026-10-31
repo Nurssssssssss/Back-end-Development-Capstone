@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}
+<div class="eyebrow">On tour</div><h2>Upcoming Concerts</h2><p class="lede">Catch the band live at the following venues.</p>
+<div class="grid">{% for concert in concerts %}<div class="card"><div class="tag">{{concert.date|date:"M d, Y"}}</div><h3>{{concert.venue}}</h3>
+<p class="muted">{{concert.location}}</p></div>{% empty %}<div class="card">No concerts have been announced.</div>{% endfor %}</div>{% endblock %}

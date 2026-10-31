@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<div class="eyebrow">The music</div><h2>Our Songs</h2>
+<p class="lede">Browse the track list and open any song to explore its lyrics.</p>
+<div class="grid">{% for song in songs %}
+<article class="card"><div class="tag">TRACK {{ forloop.counter|stringformat:"02d" }}</div>
+<h3>{{song.title}}</h3><p class="muted">{{ song.artist|default:"Northbound" }}</p>
+<button type="button" onclick="document.getElementById('modal-{{forloop.counter}}').showModal()">View lyrics</button>
+<dialog id="modal-{{forloop.counter}}"><div class="eyebrow">Track details</div><h2>{{song.title}}</h2>
+<p class="muted">Artist: {{song.artist|default:"Northbound"}}</p><p>{{song.lyrics|default:"Lyrics will be added soon."}}</p>
+<form method="dialog"><button>Close</button></form></dialog></article>
+{% empty %}<div class="card">No songs yet. Run <code>python manage.py seed_demo</code>.</div>{% endfor %}</div>{% endblock %}

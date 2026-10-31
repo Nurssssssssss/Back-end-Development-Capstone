@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block content %}
+<div class="eyebrow">On the road</div><h2>Photos / Pictures</h2>
+<p class="lede">Highlights and moments from the music journey.</p>
+<div class="grid">{% for photo in photos %}<article class="card"><img src="{{photo.image_url}}" alt="{{photo.title}}"><h3>{{photo.title}}</h3></article>
+{% empty %}<div class="card">No pictures yet. Run <code>python manage.py seed_demo</code>.</div>{% endfor %}</div>{% endblock %}
